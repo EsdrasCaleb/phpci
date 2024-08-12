@@ -2,16 +2,16 @@ This is a simple project to make a php script to make a Continuos Integration wi
 you create you env file. This code was made with AI assist.
 
 
-Create a Webhook in GitHub
+### Create a Webhook in GitHub
 
--Go to your GitHub repository.
--Click on Settings.
--In the left sidebar, click on Webhooks.
--Click Add webhook.
--Set the Payload URL to the URL of the PHP script you will create (e.g., http://yourdomain.com/git-pull.php).
--Set the Content type to application/json.
--Choose the event types you want to trigger the webhook. For a simple setup, you can select "Just the push event."
--Click Add webhook.
+1.  Go to your GitHub repository.
+2.  Click on **Settings**.
+3.  In the left sidebar, click on **Webhooks**.
+4.  Click **Add webhook**.
+5.  Set the **Payload URL** to the URL of the PHP script you will create (e.g., `http://yourdomain.com/git-pull.php`).
+6.  Set the **Content type** to `application/json`.
+7.  Choose the event types you want to trigger the webhook. For a simple setup, you can select "Just the `push` event."
+8.  Click **Add webhook**
 
 
 If you do not have your project with the ssh pull automatic configures you need to fill the token variable in env and configure a token in your github
