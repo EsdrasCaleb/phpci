@@ -29,6 +29,10 @@ if(is_dir($_ENV['PROJECT_PATH'])){
     chdir($_ENV['PROJECT_PATH']);
 }
 
+if($_ENV['TOKEN']&&$_ENV['TOKEN']){
+    exec('git remote set-url origin https://'.$_ENV['TOKEN'].'@'.$_ENV['GIT_URL']);
+}
+
 // Run the git pull command
 $output = [];
 $return_var = 0;
