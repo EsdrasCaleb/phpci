@@ -20,11 +20,14 @@ if ($secret) {
 }
 
 // Log the payload for debugging (optional)
-if($_ENV['SAVE_LOG'])
-file_put_contents('webhook.log', $payload.PHP_EOL, FILE_APPEND);
+if($_ENV['SAVE_LOG']){
+    file_put_contents('webhook.log', $payload.PHP_EOL, FILE_APPEND);
+}
 
 // Change to the directory of your project
-chdir('/path/to/your/repo');
+if(is_dir($_ENV['PROJECT_PATH'])){
+    chdir($_ENV['PROJECT_PATH']);
+}
 
 // Run the git pull command
 $output = [];
@@ -32,7 +35,9 @@ $return_var = 0;
 exec('git pull 2>&1', $output, $return_var);
 
 // Log the output for debugging (optional)
-file_put_contents('git-pull.log', implode(PHP_EOL, $output).PHP_EOL, FILE_APPEND);
+if($_ENV['SAVE_LOG']){
+    file_put_contents('git-pull.log', implode(PHP_EOL, $output).PHP_EOL, FILE_APPEND);
+}
 
 // Send a response back to GitHub
 if ($return_var === 0) {
