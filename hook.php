@@ -36,6 +36,15 @@ if($_ENV['TOKEN']&&$_ENV['TOKEN']){
 // Run the git pull command
 $output = [];
 $return_var = 0;
+if($_ENV['RESET_BEFORE_PULL']){
+    exec('git reset --hard', $output, $return_var);
+    if ($return_var === 0) {
+        echo 'Git reset successful';
+    }
+    else {
+        echo 'Git reset failed';
+    }
+}
 exec('git pull 2>&1', $output, $return_var);
 
 // Log the output for debugging (optional)
