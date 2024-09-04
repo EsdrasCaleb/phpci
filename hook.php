@@ -11,7 +11,7 @@ $currentPath = __DIR__;
 // Verify the payload if the secret is set
 if ($secret) {
     $headers = getallheaders();
-    if (!hash_equals('sha256='.hash_hmac('sha256', $$payload, $secret), $headers['x-hub-signature-256'])) {
+    if (!hash_equals('sha256='.hash_hmac('sha256', $$payload, $secret), $headers['X-Hub-Signature-256'])) {
         header('HTTP/1.1 403 Forbidden');
         exit('Invalid signature');
     }
