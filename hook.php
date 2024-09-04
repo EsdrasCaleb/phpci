@@ -37,6 +37,7 @@ $return_var = 0;
 
 if($_ENV['RESET_BEFORE_PULL']){
     exec('git reset --hard', $output, $return_var);
+    var_dump($output);
     if ($return_var === 0) {
         echo 'Git reset successful';
     }
@@ -46,6 +47,7 @@ if($_ENV['RESET_BEFORE_PULL']){
 }
 if($_ENV["BRANCH"]){
     exec('git checkout '.$_ENV["BRANCH"], $output, $return_var);
+    var_dump($output);
     if ($return_var === 0) {
         echo 'Git checkout successful';
     }
@@ -54,7 +56,7 @@ if($_ENV["BRANCH"]){
     }
 }
 exec('git pull 2>&1', $output, $return_var);
-
+var_dump($output);
 // Log the output for debugging (optional)
 if($_ENV['SAVE_LOG']){
     file_put_contents("{$currentPath}/git-pull.log", implode(PHP_EOL, $output).PHP_EOL, FILE_APPEND);
